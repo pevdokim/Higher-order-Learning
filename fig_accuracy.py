@@ -11,7 +11,7 @@ data1 = data[data.type == 1]
 data2 = data[data.type == 2]
 data3 = data[data.type == 3]
 
-# merge by group
+# merge by matching group, so that P1 and P2 beliefs are in the same row
 
 data_merged = pd.merge(data1,
                        data2,
@@ -36,7 +36,7 @@ data_merged["accuracy2_turk_2"] = 1-abs(data_merged["guess2_y"]-data_merged["gue
 # overall accuracy of Mturk p2 beliefs
 data_merged["accuracy2_turk"] = 0.5 * (data_merged["accuracy2_turk_1"] + data_merged["accuracy2_turk_2"])
 
-# average belief accuracy by treatment and period
+# average the belief accuracy variable by treatment and period
 
 acc2_mean = data_merged.groupby(["mturk", "lon", "private", "gameperiod"]).accuracy2.mean().reset_index()
 acc3_mean = data_merged.groupby(["mturk", "lon", "private", "gameperiod"]).accuracy3.mean().reset_index()
