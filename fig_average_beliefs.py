@@ -28,7 +28,8 @@ mturk2_mean.sort_values(by=["mturk", "lon", "private", "gameperiod"]).reset_inde
 
 # make the plots
 
-plt.figure(figsize=(6, 6))
+fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(6, 6))
+
 plt.subplot(3, 2, 1, title="Public (lab)")
 
 plt.plot(range(1,31), data_mean.guess_truth[(data_mean.mturk==0) & (data_mean.lon==0) & (data_mean.private==0) & (data_mean.type==1)])
@@ -73,5 +74,8 @@ plt.axis([0,31,.45,.81])
 
 plt.subplots_adjust(wspace=.5)
 plt.subplots_adjust(hspace=1.1)
+
+fig.legend(["Player 1", "Player 2", "Player 3"], loc='lower right', bbox_to_anchor=(0.8, .15)
+)
 
 plt.show()
