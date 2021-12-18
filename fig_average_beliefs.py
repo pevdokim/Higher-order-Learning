@@ -7,7 +7,7 @@ data = pd.read_csv("data_ee.csv")
 
 # create the normalized beliefs variables
 
-# note second-order beliefs are saved as guess2 in the mturk treatments, so the averaging there needs to be done separately
+# note that second-order beliefs are saved as guess2 in the mturk treatments, so the averaging there needs to be done separately
 
 data["guess_truth"] = data.apply(lambda row: row["guess"] if row["urn"] == 1 else 1-row["guess"], axis=1)
 data["guess2_truth"] = data.apply(lambda row: row["guess2"] if row["urn"] == 1 else 1-row["guess2"], axis=1)
